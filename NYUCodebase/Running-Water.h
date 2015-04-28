@@ -4,8 +4,8 @@
 //  Copyright (c) 2015 John Ward. All rights reserved.
 //
 
-#ifndef __Running-Water__Running-Water__
-#define __Running-Water__Running-Water__
+#ifndef __NYUCodebase__ClassDemoApp__
+#define __NYUCodebase__ClassDemoApp__
 
 #include <stdio.h>
 #include <iostream>
@@ -18,7 +18,6 @@
 #include "Sprite.h"
 #include "Brush.h"
 const int LEVEL_SCALE = 20;
-
 
 
 class ClassDemoApp {
