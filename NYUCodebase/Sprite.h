@@ -8,6 +8,7 @@
 #define __NYUCodebase__Sprite__
 
 #include <stdio.h>
+#include <iostream>
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <SDL_image.h>
@@ -23,12 +24,15 @@ public:
     float rotation;
     float width;
     float height;
+    
+    float move_speed;
     float x_speed;
     float y_speed;
     float x_acceleration;
     float y_acceleration;
     float x_friction;
     float y_friction;
+    
     bool visible;
     bool top_collided;
     bool bottom_collided;
@@ -40,7 +44,7 @@ public:
     Sprite(float x, float y, float rotation, float width, float height, bool visible);
     
     
-    void FixedUpdate(float elapsed);
+    void FixedUpdate(float elapsed, std::vector<Brush*> brushes);
     
     bool top_bottom_collision_response(Brush* brush);
     bool left_right_collision_response(Brush* brush);

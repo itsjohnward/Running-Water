@@ -27,13 +27,11 @@ Sprite::Sprite(float x, float y, float rotation, float width, float height, bool
     visible(visible)
 {  }
 
-void Sprite::FixedUpdate(float FIXED_TIMESTEP) {
+void Sprite::FixedUpdate(float FIXED_TIMESTEP, std::vector<Brush*> brushes) {
     x_speed = lerp(x_speed, 0.0f, FIXED_TIMESTEP * x_friction);
     y_speed = lerp(y_speed, 0.0f, FIXED_TIMESTEP * y_friction);
     x_speed += x_acceleration * FIXED_TIMESTEP;
     y_speed += y_acceleration * FIXED_TIMESTEP;
-    x += x_speed * FIXED_TIMESTEP;
-    y += y_speed * FIXED_TIMESTEP;
     
     top_collided = false;
     bottom_collided = false;
@@ -41,6 +39,16 @@ void Sprite::FixedUpdate(float FIXED_TIMESTEP) {
     right_collided = false;
     x_friction = 1;
     y_friction = 1;
+    
+    std::cout << x << std::endl;
+    x += x_speed * FIXED_TIMESTEP;
+    for(int p = 0; p < brushes.size(); p++) {
+        left_right_collision_response(brushes[p]);
+    }
+    y += y_speed * FIXED_TIMESTEP;
+    for(int p = 0; p < brushes.size(); p++) {
+        top_bottom_collision_response(brushes[p]);
+    }
 }
 
 bool Sprite::top_bottom_collision_response(Brush* brush) {
@@ -190,10 +198,10 @@ void Sprite::drawShape() {
 
 
 void Sprite::moveLeft() {
-    x_acceleration = -2;
+    x_acceleration = -move_speed;
 }
 void Sprite::moveRight() {
-    x_acceleration = 2;
+    x_acceleration = move_speed;
 }
 
 float Sprite::lerp(float v0, float v1, float t) {

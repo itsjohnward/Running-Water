@@ -11,6 +11,12 @@
 		52EA9B111AA4C1990024CAAA /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52EA9B0F1AA4C1990024CAAA /* Texture.cpp */; };
 		52F009AD1AADE94D003A9A2F /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F009AB1AADE94D003A9A2F /* Brush.cpp */; };
 		52F81DAF1A9E854D003252FF /* Running-Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F81DAD1A9E854D003252FF /* Running-Water.cpp */; };
+		52FC5BD21AF34BB90078D7F4 /* p1_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD01AF34BB90078D7F4 /* p1_spritesheet.png */; };
+		52FC5BD31AF34BB90078D7F4 /* p1_spritesheet.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD11AF34BB90078D7F4 /* p1_spritesheet.txt */; };
+		52FC5BD61AF34C360078D7F4 /* hud_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD41AF34C360078D7F4 /* hud_spritesheet.png */; };
+		52FC5BD71AF34C360078D7F4 /* hud_spritesheet.xml in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD51AF34C360078D7F4 /* hud_spritesheet.xml */; };
+		52FC5BDA1AF34C7F0078D7F4 /* tiles_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD81AF34C7F0078D7F4 /* tiles_spritesheet.png */; };
+		52FC5BDB1AF34C7F0078D7F4 /* tiles_spritesheet.xml in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD91AF34C7F0078D7F4 /* tiles_spritesheet.xml */; };
 		6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86AD19AE5C710066C1FD /* Cocoa.framework */; };
 		6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86B619AE5C710066C1FD /* InfoPlist.strings */; };
 		6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A86B919AE5C710066C1FD /* main.cpp */; };
@@ -30,6 +36,12 @@
 		52F009AC1AADE94D003A9A2F /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
 		52F81DAD1A9E854D003252FF /* Running-Water.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Running-Water.cpp"; sourceTree = "<group>"; };
 		52F81DAE1A9E854D003252FF /* Running-Water.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Running-Water.h"; sourceTree = "<group>"; };
+		52FC5BD01AF34BB90078D7F4 /* p1_spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1_spritesheet.png; sourceTree = "<group>"; };
+		52FC5BD11AF34BB90078D7F4 /* p1_spritesheet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = p1_spritesheet.txt; sourceTree = "<group>"; };
+		52FC5BD41AF34C360078D7F4 /* hud_spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_spritesheet.png; sourceTree = "<group>"; };
+		52FC5BD51AF34C360078D7F4 /* hud_spritesheet.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = hud_spritesheet.xml; sourceTree = "<group>"; };
+		52FC5BD81AF34C7F0078D7F4 /* tiles_spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiles_spritesheet.png; sourceTree = "<group>"; };
+		52FC5BD91AF34C7F0078D7F4 /* tiles_spritesheet.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tiles_spritesheet.xml; sourceTree = "<group>"; };
 		6D5A86AA19AE5C710066C1FD /* Running-Water.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Running-Water.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5A86AD19AE5C710066C1FD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D5A86B019AE5C710066C1FD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -67,6 +79,19 @@
 				52EA9B101AA4C1990024CAAA /* Texture.h */,
 			);
 			name = "Sprite-Support";
+			sourceTree = "<group>";
+		};
+		52FC5BCF1AF34BA90078D7F4 /* Spritesheets */ = {
+			isa = PBXGroup;
+			children = (
+				52FC5BD01AF34BB90078D7F4 /* p1_spritesheet.png */,
+				52FC5BD11AF34BB90078D7F4 /* p1_spritesheet.txt */,
+				52FC5BD41AF34C360078D7F4 /* hud_spritesheet.png */,
+				52FC5BD51AF34C360078D7F4 /* hud_spritesheet.xml */,
+				52FC5BD81AF34C7F0078D7F4 /* tiles_spritesheet.png */,
+				52FC5BD91AF34C7F0078D7F4 /* tiles_spritesheet.xml */,
+			);
+			name = Spritesheets;
 			sourceTree = "<group>";
 		};
 		6D5A86A119AE5C710066C1FD = {
@@ -121,6 +146,7 @@
 		6D5A86B419AE5C710066C1FD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				52FC5BCF1AF34BA90078D7F4 /* Spritesheets */,
 				6D5A86C519AE5C710066C1FD /* Images.xcassets */,
 				6D5A86B519AE5C710066C1FD /* Running-Water-Info.plist */,
 				6D5A86B619AE5C710066C1FD /* InfoPlist.strings */,
@@ -197,9 +223,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FC5BDA1AF34C7F0078D7F4 /* tiles_spritesheet.png in Resources */,
 				6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */,
+				52FC5BD21AF34BB90078D7F4 /* p1_spritesheet.png in Resources */,
+				52FC5BD71AF34C360078D7F4 /* hud_spritesheet.xml in Resources */,
+				52FC5BD61AF34C360078D7F4 /* hud_spritesheet.png in Resources */,
+				52FC5BDB1AF34C7F0078D7F4 /* tiles_spritesheet.xml in Resources */,
 				6D5A86C619AE5C710066C1FD /* Images.xcassets in Resources */,
 				6D5A86BE19AE5C710066C1FD /* Credits.rtf in Resources */,
+				52FC5BD31AF34BB90078D7F4 /* p1_spritesheet.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

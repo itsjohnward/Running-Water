@@ -17,16 +17,19 @@ ClassDemoApp::ClassDemoApp(): state(0), done(false), lastFrameTicks(0.0f), score
 
 void ClassDemoApp::Init() {
     SDL_Init(SDL_INIT_VIDEO);
-    displayWindow = SDL_CreateWindow("Final Project", SDL_WINDOWPOS_CENTERED,
-                                     SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
+    displayWindow = SDL_CreateWindow("Running Water", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
+    
     SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
     SDL_GL_MakeCurrent(displayWindow, context);
+    
+    //SDL_SetWindowFullscreen( displayWindow, SDL_WINDOW_FULLSCREEN_DESKTOP );
     
     zeroLevel();
     buildLevel();
     
     sprites.push_back(new Sprite(0.0, 0.0, 0.0, 0.05, 0.05, true));
     sprites[0]->y_acceleration = -5;
+    sprites[0]->move_speed = 2;
 }
 
 ClassDemoApp::~ClassDemoApp() {
@@ -46,7 +49,7 @@ void ClassDemoApp::Render() {
 void ClassDemoApp::Update(float elapsed) {
     for(int i = 0; i < sprites.size(); i++) {
         
-        sprites[i]->FixedUpdate(FIXED_TIMESTEP);
+        sprites[i]->FixedUpdate(FIXED_TIMESTEP, brushes);
         
         for(int p = 0; p < brushes.size(); p++) {
             sprites[i]->collision(brushes[p]);
@@ -132,7 +135,7 @@ void ClassDemoApp::playerControls() {
             done = true;
         }
         else if(event.type == SDL_KEYDOWN) {
-            if(event.key.keysym.scancode == SDL_SCANCODE_SPACE && canJump(sprites[0])) {
+            if(event.key.keysym.scancode == SDL_SCANCODE_SPACE && (sprites[0]->bottom_collided)) {
                 sprites[0]->y_speed = 2.5;
             }
         }
@@ -146,13 +149,4 @@ void ClassDemoApp::playerControls() {
     if(keys[SDL_SCANCODE_D]) {
         sprites[0]->moveRight();
     }
-}
-               
-bool ClassDemoApp::canJump(Sprite* sprite) {
-    for(int i = 0; i < brushes.size(); i++) {
-        if(sprite->bottom_collided) {
-            return true;
-        }
-    }
-    return false;
 }

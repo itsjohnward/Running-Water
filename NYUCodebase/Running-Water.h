@@ -34,7 +34,6 @@ public:
     void drawLevel();
     void drawSprites();
     void playerControls();
-    bool canJump(Sprite* sprite);
     
     enum GameState { STATE_GAME, STATE_MENU_END };
     int state;
