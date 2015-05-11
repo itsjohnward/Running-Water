@@ -50,7 +50,7 @@ void Sprite::FixedUpdate(float FIXED_TIMESTEP, std::vector<Brush*> brushes) {
     x_friction = 1;
     y_friction = 1;
     
-    std::cout << x << std::endl;
+    //std::cout << x << std::endl;
     x += x_speed * FIXED_TIMESTEP;
     for(int p = 0; p < brushes.size(); p++) {
         if (brushes[p]->collideable) {

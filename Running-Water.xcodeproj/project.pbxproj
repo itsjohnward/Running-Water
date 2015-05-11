@@ -13,6 +13,10 @@
 		52F81DAF1A9E854D003252FF /* Running-Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F81DAD1A9E854D003252FF /* Running-Water.cpp */; };
 		52F8D0C61B00279A0035D504 /* Floor Texture_0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0C51B00279A0035D504 /* Floor Texture_0.JPG */; };
 		52F8D0C81B002E9B0035D504 /* glass-of-water-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0C71B002E9B0035D504 /* glass-of-water-hi.png */; };
+		52F8D0CA1B004B920035D504 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F8D0C91B004B920035D504 /* SDL2_mixer.framework */; };
+		52F8D0CC1B004C7C0035D504 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0CB1B004C7C0035D504 /* music.mp3 */; };
+		52F8D0CE1B004CE10035D504 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0CD1B004CE10035D504 /* background.mp3 */; };
+		52F8D0D01B004E3F0035D504 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0CF1B004E3F0035D504 /* jump.wav */; };
 		52FC5BD21AF34BB90078D7F4 /* p1_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD01AF34BB90078D7F4 /* p1_spritesheet.png */; };
 		52FC5BD31AF34BB90078D7F4 /* p1_spritesheet.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD11AF34BB90078D7F4 /* p1_spritesheet.txt */; };
 		52FC5BD61AF34C360078D7F4 /* hud_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD41AF34C360078D7F4 /* hud_spritesheet.png */; };
@@ -40,6 +44,10 @@
 		52F81DAE1A9E854D003252FF /* Running-Water.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Running-Water.h"; sourceTree = "<group>"; };
 		52F8D0C51B00279A0035D504 /* Floor Texture_0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Floor Texture_0.JPG"; sourceTree = "<group>"; };
 		52F8D0C71B002E9B0035D504 /* glass-of-water-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glass-of-water-hi.png"; sourceTree = "<group>"; };
+		52F8D0C91B004B920035D504 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_mixer.framework; sourceTree = "<group>"; };
+		52F8D0CB1B004C7C0035D504 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		52F8D0CD1B004CE10035D504 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		52F8D0CF1B004E3F0035D504 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
 		52FC5BD01AF34BB90078D7F4 /* p1_spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1_spritesheet.png; sourceTree = "<group>"; };
 		52FC5BD11AF34BB90078D7F4 /* p1_spritesheet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = p1_spritesheet.txt; sourceTree = "<group>"; };
 		52FC5BD41AF34C360078D7F4 /* hud_spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_spritesheet.png; sourceTree = "<group>"; };
@@ -67,6 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D5AC2D019AE6280004CB1BF /* OpenGL.framework in Frameworks */,
+				52F8D0CA1B004B920035D504 /* SDL2_mixer.framework in Frameworks */,
 				6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */,
 				6D5A86E319AE5CD10066C1FD /* SDL2.framework in Frameworks */,
 				6D5AC2D219AE6A1E004CB1BF /* SDL2_image.framework in Frameworks */,
@@ -120,6 +129,7 @@
 		6D5A86AC19AE5C710066C1FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52F8D0C91B004B920035D504 /* SDL2_mixer.framework */,
 				6D5AC2D119AE6A1E004CB1BF /* SDL2_image.framework */,
 				6D5AC2CF19AE6280004CB1BF /* OpenGL.framework */,
 				6D5A86E219AE5CD10066C1FD /* SDL2.framework */,
@@ -154,6 +164,9 @@
 			children = (
 				52FC5BCF1AF34BA90078D7F4 /* Spritesheets */,
 				6D5A86C519AE5C710066C1FD /* Images.xcassets */,
+				52F8D0CB1B004C7C0035D504 /* music.mp3 */,
+				52F8D0CD1B004CE10035D504 /* background.mp3 */,
+				52F8D0CF1B004E3F0035D504 /* jump.wav */,
 				6D5A86B519AE5C710066C1FD /* Running-Water-Info.plist */,
 				6D5A86B619AE5C710066C1FD /* InfoPlist.strings */,
 				6D5A86BC19AE5C710066C1FD /* Credits.rtf */,
@@ -229,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52F8D0CE1B004CE10035D504 /* background.mp3 in Resources */,
 				52F8D0C61B00279A0035D504 /* Floor Texture_0.JPG in Resources */,
 				52FC5BDA1AF34C7F0078D7F4 /* tiles_spritesheet.png in Resources */,
 				6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */,
@@ -237,6 +251,8 @@
 				52FC5BD61AF34C360078D7F4 /* hud_spritesheet.png in Resources */,
 				52FC5BDB1AF34C7F0078D7F4 /* tiles_spritesheet.xml in Resources */,
 				6D5A86C619AE5C710066C1FD /* Images.xcassets in Resources */,
+				52F8D0CC1B004C7C0035D504 /* music.mp3 in Resources */,
+				52F8D0D01B004E3F0035D504 /* jump.wav in Resources */,
 				52F8D0C81B002E9B0035D504 /* glass-of-water-hi.png in Resources */,
 				6D5A86BE19AE5C710066C1FD /* Credits.rtf in Resources */,
 				52FC5BD31AF34BB90078D7F4 /* p1_spritesheet.txt in Resources */,
@@ -312,6 +328,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Frameworks/SDL2_mixer.framework/Versions/A/Headers,
+					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
+					/Library/Frameworks/SDL2_image.framework/Versions/A/Headers,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -345,6 +368,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
+					/Library/Frameworks/SDL2_image.framework/Versions/A/Headers,
+					/Library/Frameworks/SDL2_mixer.framework/Versions/A/Headers,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
@@ -358,6 +388,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
@@ -381,6 +412,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";

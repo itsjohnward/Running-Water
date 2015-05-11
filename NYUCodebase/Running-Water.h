@@ -12,6 +12,7 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include <vector>
 #include <string>
 #include "Texture.h"
@@ -29,14 +30,17 @@ public:
     void Render();
     void Update(float elapsed);
     void FixedUpdate(float fixedElapsed);
+    void MainMenu();
     void zeroLevel();
     void levelOne();
+    void levelTwo();
+    void levelThree();
     void buildLevel();
     void drawLevel();
     void drawSprites();
     void playerControls();
     
-    enum GameState { STATE_GAME, STATE_MENU_END };
+    enum GameState { STATE_MENU, STATE_GAME, STATE_MENU_END };
     int state;
     
     bool done;
@@ -49,6 +53,9 @@ public:
     
     SDL_Window* displayWindow;
     SDL_Event event;
+    
+    Mix_Music* music;
+    Mix_Chunk* jump;
     
     GLuint texture_font;
     GLuint texture_sheet;
