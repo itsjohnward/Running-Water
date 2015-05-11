@@ -25,6 +25,7 @@ public:
     float height;
     bool visible;
     bool collideable;
+    int trigger;
     float friction;
     
     Brush();

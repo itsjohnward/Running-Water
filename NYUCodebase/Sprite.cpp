@@ -108,7 +108,7 @@ bool Sprite::left_right_collision_response(Brush* brush) {
 }
 
 bool Sprite::collision(Brush* brush) {
-    return (top_bottom_collision_response(brush) || left_right_collision_response(brush) );
+    return (top_collision(brush) || bottom_collision(brush) || left_collision(brush) || right_collision(brush));
 }
 
 bool Sprite::top_collision (Brush* brush) {

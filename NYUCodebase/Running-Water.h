@@ -37,11 +37,14 @@ public:
     void levelThree();
     void buildLevel();
     void drawLevel();
+    void levelComplete();
     void drawSprites();
     void playerControls();
+    void debrisFall();
     
     enum GameState { STATE_MENU, STATE_GAME, STATE_MENU_END };
     int state;
+    int state_level;
     
     bool done;
     
@@ -62,11 +65,13 @@ public:
     SheetTexture* floor_texture;
     GLuint floor_texture2;
     GLuint water_texture;
+    GLuint goal_texture;
     
     const Uint8 *keys;
     std::vector<std::vector<int>> level;
     std::vector<Brush*> brushes;
     std::vector<Sprite*> sprites;
+    Sprite* player;
 };
 
 #endif /* defined(__NYUCodebase__ClassDemoApp__) */

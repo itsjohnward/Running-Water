@@ -16,7 +16,8 @@ rotation(0),
 width(0.05),
 height(0.05),
 visible(visible),
-collideable(collideable)
+collideable(collideable),
+trigger(0)
 { load(); }
 
 Brush::Brush(GLuint texture, float x, float y, bool visible, bool collideable):
@@ -27,7 +28,8 @@ rotation(0),
 width(0.05),
 height(0.05),
 visible(visible),
-collideable(collideable)
+collideable(collideable),
+trigger(0)
 { load(); }
 
 Brush::Brush(float x, float y, bool visible, bool collideable):
@@ -38,7 +40,8 @@ rotation(0),
 width(0.05),
 height(0.05),
 visible(visible),
-collideable(collideable)
+collideable(collideable),
+trigger(0)
 { load(); }
 
 void Brush::Update(float elapsed) {

@@ -6,12 +6,25 @@
 
 #include "Running-Water.h"
 
+bool pointCollision(float x, float y, Sprite* sprite) {
+    //x /= 1.333; //Strange that his is an issue. Will blocks collide properly on the x, or do I have to divide something else by 1.333? Requires further investigation.
+    return(((sprite->x - sprite->width) < x) &&
+           ((sprite->x + sprite->width) > x) &&
+           ((sprite->y - sprite->height) < y) &&
+           ((sprite->y + sprite->height) > y));
+}
+
 // 60 FPS (1.0f/60.0f)
 float FIXED_TIMESTEP = 0.0166666f;
 int MAX_TIMESTEPS = 6;
 float timeLeftOver = 0.0f;
 
 ClassDemoApp::ClassDemoApp(): state(0), done(false), lastFrameTicks(0.0f), score(0), time(0) {
+    SDL_Init(SDL_INIT_VIDEO);
+    displayWindow = SDL_CreateWindow("Running Water", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
+    
+    SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
+    SDL_GL_MakeCurrent(displayWindow, context);
     Init();
 }
 ClassDemoApp::~ClassDemoApp() {
@@ -21,13 +34,6 @@ ClassDemoApp::~ClassDemoApp() {
 }
 
 void ClassDemoApp::Init() {
-    SDL_Init(SDL_INIT_VIDEO);
-    displayWindow = SDL_CreateWindow("Running Water", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
-    
-    SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
-    SDL_GL_MakeCurrent(displayWindow, context);
-    
-    //SDL_SetWindowFullscreen( displayWindow, SDL_WINDOW_FULLSCREEN_DESKTOP );
     
     Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 4096 );
     music = Mix_LoadMUS( "background.mp3" );
@@ -35,18 +41,21 @@ void ClassDemoApp::Init() {
     
     jump = Mix_LoadWAV("jump.wav");
     
+    texture_font = LoadTexture("font1.png");
     texture_sheet = LoadTexture("tiles_spritesheet.png");
-    floor_texture = new SheetTexture(texture_sheet, 144,576,70,70, 914, 936);
+    floor_texture = new SheetTexture(texture_sheet, 792,144,70,70, 914, 936);
     floor_texture2 = LoadTexture("Floor Texture_0.JPG");
     water_texture = LoadTexture("glass-of-water-hi.png");
+    goal_texture = LoadTexture("sprite_alert_flag.png");
     
-    zeroLevel();
+    //zeroLevel();
     levelOne();
     buildLevel();
+    state_level = 1;
     
-    sprites.push_back(new Sprite(water_texture, 0.0, 0.0, 0.0, 0.05, 0.05, true));
-    sprites[0]->y_acceleration = -5;
-    sprites[0]->move_speed = 2;
+    player = new Sprite(water_texture, 0.0, 0.0, 0.0, 0.05, 0.05, true);
+    player->y_acceleration = -5;
+    player->move_speed = 2;
 }
 
 
@@ -67,6 +76,14 @@ void ClassDemoApp::Render() {
 }
 
 void ClassDemoApp::Update(float elapsed) {
+    for(int i = 0; i < brushes.size(); i++) {
+        if ((brushes[i]->trigger == 1) && (player->collision(brushes[i]))) {
+            levelComplete();
+            std::cout << "level complete" << std::endl;
+        }
+    }
+    
+    player->FixedUpdate(FIXED_TIMESTEP, brushes);
     for(int i = 0; i < sprites.size(); i++) {
         
         sprites[i]->FixedUpdate(FIXED_TIMESTEP, brushes);
@@ -104,7 +121,10 @@ bool ClassDemoApp::UpdateAndRender() {
 }
 
 void ClassDemoApp::MainMenu() {
-    
+    DrawText(texture_font, "Running", 0.5, -0.3, 1.0, 1.0, 1.0, 1, -0.5, 0.75);
+    DrawText(texture_font, "Water", 0.5, -0.3, 1.0, 1.0, 1.0, 1, -0.6, 0.25);
+    DrawText(texture_font, "Space to Continue", 0.15, -0.1, 1.0, 1.0, 1.0, 1, -0.75, -0.25);
+    DrawText(texture_font, "R to restart", 0.15, -0.1, 1.0, 1.0, 1.0, 1, -0.75, -0.5);
 }
 
 void ClassDemoApp::zeroLevel() {
@@ -177,6 +197,13 @@ void ClassDemoApp::levelOne() {
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -184,6 +211,12 @@ void ClassDemoApp::levelOne() {
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -191,21 +224,8 @@ void ClassDemoApp::levelOne() {
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -218,11 +238,11 @@ void ClassDemoApp::levelTwo() {
     level =
     {   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -275,7 +295,7 @@ void ClassDemoApp::levelThree() {
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -309,7 +329,12 @@ void ClassDemoApp::buildLevel() {
             if(level[row][column]==0) {
                 brushes.push_back(new Brush(floor_texture2, (float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE)+(float)1/LEVEL_SCALE, true, false));
             }
-            if(level[row][column]==1) {
+            else if(level[row][column]==2) {
+                brushes.push_back(new Brush(goal_texture, (float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE)+(float)1/LEVEL_SCALE, true, false));
+                brushes[brushes.size()-1]->trigger = 1;
+                std::cout << "x: " << (float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE) << ", y: " << (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE)+(float)1/LEVEL_SCALE << std::endl;
+            }
+            else if(level[row][column]==1) {
                 brushes.push_back(new Brush(floor_texture, (float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE)));
             }
         }
@@ -325,7 +350,26 @@ void ClassDemoApp::drawLevel() {
     }
 }
 
+void ClassDemoApp::levelComplete() {
+    std::cout << state_level << std::endl;
+    if(state_level==1 || state_level==2) {
+        state_level++;
+        if(state_level==2) {
+            levelTwo();
+            buildLevel();
+        }
+        if(state_level==3) {
+            levelThree();
+            buildLevel();
+        }
+    }
+    else if(state_level==3) {
+        state = STATE_MENU_END;
+    }
+}
+
 void ClassDemoApp::drawSprites() {
+    player->draw();
     for( int i = 0; i < sprites.size(); i++ ) {
         sprites[i]->draw();
     }
@@ -341,11 +385,17 @@ void ClassDemoApp::playerControls() {
                 if(event.key.keysym.scancode == SDL_SCANCODE_SPACE) {
                     state = 1;
                 }
+                else if(event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
+                    done = true;
+                }
+                else if(event.key.keysym.scancode == SDL_SCANCODE_R) {
+                    Init();
+                }
             }
             else if (state == STATE_GAME) {
-                if(event.key.keysym.scancode == SDL_SCANCODE_SPACE && (sprites[0]->bottom_collided)) {
+                if(event.key.keysym.scancode == SDL_SCANCODE_SPACE && (player->bottom_collided)) {
                     Mix_PlayChannel( -1, jump, 0);
-                    sprites[0]->y_speed = 2.5;
+                    player->y_speed = 2.5;
                 }
                 if(event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
                     state = 0;
@@ -354,12 +404,16 @@ void ClassDemoApp::playerControls() {
         }
     }
     
-    sprites[0]->x_acceleration = 0;
+    player->x_acceleration = 0;
     keys = SDL_GetKeyboardState(NULL);
     if(keys[SDL_SCANCODE_A]) {
-        sprites[0]->moveLeft();
+        player->moveLeft();
     }
     if(keys[SDL_SCANCODE_D]) {
-        sprites[0]->moveRight();
+        player->moveRight();
     }
+}
+
+void ClassDemoApp::debrisFall() {
+    
 }
