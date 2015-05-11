@@ -25,13 +25,14 @@ void ClassDemoApp::Init() {
     //SDL_SetWindowFullscreen( displayWindow, SDL_WINDOW_FULLSCREEN_DESKTOP );
     
     texture_sheet = LoadTexture("tiles_spritesheet.png");
-    floor_texture = new SheetTexture(texture_sheet, 72, 432, 70, 70, 914, 936);
+    floor_texture = new SheetTexture(texture_sheet, 144,576,70,70, 914, 936);
     floor_texture2 = LoadTexture("Floor Texture_0.JPG");
+    water_texture = LoadTexture("glass-of-water-hi.png");
     
     zeroLevel();
     buildLevel();
     
-    sprites.push_back(new Sprite(0.0, 0.0, 0.0, 0.05, 0.05, true));
+    sprites.push_back(new Sprite(water_texture, 0.0, 0.0, 0.0, 0.05, 0.05, true));
     sprites[0]->y_acceleration = -5;
     sprites[0]->move_speed = 2;
 }
@@ -54,10 +55,6 @@ void ClassDemoApp::Update(float elapsed) {
     for(int i = 0; i < sprites.size(); i++) {
         
         sprites[i]->FixedUpdate(FIXED_TIMESTEP, brushes);
-        
-        for(int p = 0; p < brushes.size(); p++) {
-            sprites[i]->collision(brushes[p]);
-        }
         
     }
 
@@ -111,8 +108,11 @@ void ClassDemoApp::buildLevel() {
     brushes.clear();
     for(int row = 0; row < level.size(); row++) {
         for(int column = 0; column < level[row].size(); column++) {
+            if(level[row][column]==0) {
+                brushes.push_back(new Brush(floor_texture2, (float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), true, false));
+            }
             if(level[row][column]==1) {
-                brushes.push_back(new Brush(floor_texture2, (float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE)));
+                brushes.push_back(new Brush(floor_texture, (float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE)));
             }
         }
     }

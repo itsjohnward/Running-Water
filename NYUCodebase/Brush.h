@@ -24,13 +24,14 @@ public:
     float width;
     float height;
     bool visible;
+    bool collideable;
     float friction;
     
     Brush();
     void Update(float elapsed);
-    Brush(SheetTexture* sheet, float x, float y, bool visible=true);
-    Brush(GLuint texture, float x, float y, bool visible=true);
-    Brush(float x, float y, bool visible=true);
+    Brush(SheetTexture* sheet, float x, float y, bool visible=true, bool collideable = true);
+    Brush(GLuint texture, float x, float y, bool visible=true, bool collideable = true);
+    Brush(float x, float y, bool visible=true, bool collideable = true);
     void draw();
     void drawTexture();
     void drawSheet();

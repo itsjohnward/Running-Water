@@ -53,6 +53,7 @@ public:
     GLuint texture_sheet;
     SheetTexture* floor_texture;
     GLuint floor_texture2;
+    GLuint water_texture;
     
     const Uint8 *keys;
     std::vector<std::vector<int>> level;

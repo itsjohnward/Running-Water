@@ -21,6 +21,7 @@ public:
     float x;
     float y;
     SheetTexture* sheet;
+    GLuint texture;
     float rotation;
     float width;
     float height;
@@ -40,6 +41,7 @@ public:
     bool right_collided;
     
     Sprite();
+    Sprite(GLuint texture, float x, float y, float rotation, float width, float height, bool visible=true);
     Sprite(SheetTexture* sheet, float x, float y, float rotation, float width, float height, bool visible=true);
     Sprite(float x, float y, float rotation, float width, float height, bool visible);
     
@@ -58,6 +60,7 @@ public:
     
     void draw();
     void drawSheet();
+    void drawTexture();
     void drawShape();
     
     void moveLeft();

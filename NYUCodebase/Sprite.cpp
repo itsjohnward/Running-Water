@@ -8,6 +8,16 @@
 
 Sprite::Sprite() {}
 
+Sprite::Sprite(GLuint texture, float x, float y, float rotation, float width, float height, bool visible):
+    texture(texture),
+    x(x),
+    y(y),
+    rotation(rotation),
+    width(width),
+    height(height),
+    visible(visible)
+{  }
+
 Sprite::Sprite(SheetTexture* sheet, float x, float y, float rotation, float width, float height, bool visible):
     sheet(sheet),
     x(x),
@@ -43,11 +53,15 @@ void Sprite::FixedUpdate(float FIXED_TIMESTEP, std::vector<Brush*> brushes) {
     std::cout << x << std::endl;
     x += x_speed * FIXED_TIMESTEP;
     for(int p = 0; p < brushes.size(); p++) {
-        left_right_collision_response(brushes[p]);
+        if (brushes[p]->collideable) {
+            left_right_collision_response(brushes[p]);
+        }
     }
     y += y_speed * FIXED_TIMESTEP;
     for(int p = 0; p < brushes.size(); p++) {
-        top_bottom_collision_response(brushes[p]);
+        if (brushes[p]->collideable) {
+            top_bottom_collision_response(brushes[p]);
+        }
     }
 }
 
@@ -145,7 +159,38 @@ bool Sprite::right_collision(Brush* brush) {
 
 void Sprite::draw() {
     if (sheet != NULL) { drawSheet(); }
+    else if (texture != 0) { drawTexture(); }
     else { drawShape(); }
+}
+
+void Sprite::drawTexture() {
+    if(!visible){ return; }
+    
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glMatrixMode(GL_MODELVIEW);
+    
+    glLoadIdentity();
+    glTranslatef(x, y, 0.0);
+    glRotatef(rotation, 0.0, 0.0, 1.0);
+    
+    GLfloat quad[] = {  -width, height,
+        -width, -height,
+        width, -height,
+        width, height
+    };
+    glVertexPointer(2, GL_FLOAT, 0, quad);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    GLfloat quadUVs[] = {
+        0.0, 0.0,  0.0, 1.0,
+        1.0, 1.0,   1.0, 0.0};
+    
+    glTexCoordPointer(2, GL_FLOAT, 0, quadUVs);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glDrawArrays(GL_QUADS, 0, 4);
+    glDisable(GL_TEXTURE_2D);
 }
 
 void Sprite::drawSheet() {

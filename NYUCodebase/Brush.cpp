@@ -8,34 +8,37 @@
 
 Brush::Brush() {}
 
-Brush::Brush(SheetTexture* sheet, float x, float y, bool visible):
+Brush::Brush(SheetTexture* sheet, float x, float y, bool visible, bool collideable):
 sheet(sheet),
 x(x),
 y(y),
 rotation(0),
 width(0.05),
 height(0.05),
-visible(visible)
+visible(visible),
+collideable(collideable)
 { load(); }
 
-Brush::Brush(GLuint texture, float x, float y, bool visible):
+Brush::Brush(GLuint texture, float x, float y, bool visible, bool collideable):
 texture(texture),
 x(x),
 y(y),
 rotation(0),
 width(0.05),
 height(0.05),
-visible(visible)
+visible(visible),
+collideable(collideable)
 { load(); }
 
-Brush::Brush(float x, float y, bool visible):
+Brush::Brush(float x, float y, bool visible, bool collideable):
 sheet(NULL),
 x(x),
 y(y),
 rotation(0),
 width(0.05),
 height(0.05),
-visible(visible)
+visible(visible),
+collideable(collideable)
 { load(); }
 
 void Brush::Update(float elapsed) {
