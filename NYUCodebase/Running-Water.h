@@ -30,6 +30,7 @@ public:
     void Update(float elapsed);
     void FixedUpdate(float fixedElapsed);
     void zeroLevel();
+    void levelOne();
     void buildLevel();
     void drawLevel();
     void drawSprites();
