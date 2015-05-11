@@ -20,6 +20,38 @@
 #include "Brush.h"
 const int LEVEL_SCALE = 20;
 
+class Vector {
+public:
+    Vector();
+    Vector(float x, float y, float z);
+    float length();
+    void normalize();
+    float x;
+    float y;
+    float z;
+};
+
+class Particle {
+public:
+    Vector position;
+    Vector velocity;
+    float lifetime;
+};
+
+class ParticleEmitter {
+public:
+    ParticleEmitter(unsigned int particleCount);
+    ParticleEmitter();
+    ~ParticleEmitter();
+    void Update(float elapsed);
+    void Render();
+    Vector velocity;
+    Vector velocityDeviation;
+    Vector position;
+    Vector gravity;
+    float maxLifetime;
+    std::vector<Particle> particles;
+};
 
 class ClassDemoApp {
 public:
@@ -42,7 +74,7 @@ public:
     void playerControls();
     void debrisFall();
     
-    enum GameState { STATE_MENU, STATE_GAME, STATE_MENU_END };
+    enum GameState { STATE_MENU, STATE_GAME, STATE_DEAD, STATE_MENU_END };
     int state;
     int state_level;
     
@@ -66,12 +98,16 @@ public:
     GLuint floor_texture2;
     GLuint water_texture;
     GLuint goal_texture;
+    GLuint debris_texture;
     
     const Uint8 *keys;
     std::vector<std::vector<int>> level;
     std::vector<Brush*> brushes;
     std::vector<Sprite*> sprites;
+    std::vector<Brush*> debris;
     Sprite* player;
 };
+
+
 
 #endif /* defined(__NYUCodebase__ClassDemoApp__) */

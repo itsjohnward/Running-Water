@@ -10,6 +10,7 @@
 		522F9B101AA007E400C241F7 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 522F9B0E1AA007E400C241F7 /* Sprite.cpp */; };
 		52D260201B010EBC00D98163 /* sprite_alert_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D2601F1B010EBC00D98163 /* sprite_alert_flag.png */; };
 		52D260221B01103900D98163 /* font1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D260211B01103900D98163 /* font1.png */; };
+		52D260241B01113A00D98163 /* meteorBrown_small2.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D260231B01113A00D98163 /* meteorBrown_small2.png */; };
 		52EA9B111AA4C1990024CAAA /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52EA9B0F1AA4C1990024CAAA /* Texture.cpp */; };
 		52F009AD1AADE94D003A9A2F /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F009AB1AADE94D003A9A2F /* Brush.cpp */; };
 		52F81DAF1A9E854D003252FF /* Running-Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F81DAD1A9E854D003252FF /* Running-Water.cpp */; };
@@ -40,6 +41,7 @@
 		522F9B0F1AA007E400C241F7 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		52D2601F1B010EBC00D98163 /* sprite_alert_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite_alert_flag.png; sourceTree = "<group>"; };
 		52D260211B01103900D98163 /* font1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font1.png; sourceTree = "<group>"; };
+		52D260231B01113A00D98163 /* meteorBrown_small2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteorBrown_small2.png; sourceTree = "<group>"; };
 		52EA9B0F1AA4C1990024CAAA /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		52EA9B101AA4C1990024CAAA /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
 		52F009AB1AADE94D003A9A2F /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				52F8D0C71B002E9B0035D504 /* glass-of-water-hi.png */,
 				52D2601F1B010EBC00D98163 /* sprite_alert_flag.png */,
 				52D260211B01103900D98163 /* font1.png */,
+				52D260231B01113A00D98163 /* meteorBrown_small2.png */,
 			);
 			name = Spritesheets;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				52F8D0CE1B004CE10035D504 /* background.mp3 in Resources */,
 				52F8D0C61B00279A0035D504 /* Floor Texture_0.JPG in Resources */,
 				52FC5BDA1AF34C7F0078D7F4 /* tiles_spritesheet.png in Resources */,
+				52D260241B01113A00D98163 /* meteorBrown_small2.png in Resources */,
 				6D5A86B819AE5C710066C1FD /* InfoPlist.strings in Resources */,
 				52D260221B01103900D98163 /* font1.png in Resources */,
 				52FC5BD21AF34BB90078D7F4 /* p1_spritesheet.png in Resources */,
