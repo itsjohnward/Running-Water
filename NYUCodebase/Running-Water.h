@@ -48,7 +48,11 @@ public:
     
     SDL_Window* displayWindow;
     SDL_Event event;
+    
     GLuint texture_font;
+    GLuint texture_sheet;
+    SheetTexture* floor_texture;
+    GLuint floor_texture2;
     
     const Uint8 *keys;
     std::vector<std::vector<int>> level;

@@ -24,6 +24,10 @@ void ClassDemoApp::Init() {
     
     //SDL_SetWindowFullscreen( displayWindow, SDL_WINDOW_FULLSCREEN_DESKTOP );
     
+    texture_sheet = LoadTexture("tiles_spritesheet.png");
+    floor_texture = new SheetTexture(texture_sheet, 72, 432, 70, 70, 914, 936);
+    floor_texture2 = LoadTexture("Floor Texture_0.JPG");
+    
     zeroLevel();
     buildLevel();
     
@@ -108,7 +112,7 @@ void ClassDemoApp::buildLevel() {
     for(int row = 0; row < level.size(); row++) {
         for(int column = 0; column < level[row].size(); column++) {
             if(level[row][column]==1) {
-                brushes.push_back(new Brush((float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE)));
+                brushes.push_back(new Brush(floor_texture2, (float)column/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE), (float)row/LEVEL_SCALE-(float)(1-(float)1/LEVEL_SCALE)));
             }
         }
     }

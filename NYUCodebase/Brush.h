@@ -18,6 +18,8 @@ public:
     float x;
     float y;
     SheetTexture* sheet;
+    GLuint texture;
+    
     float rotation;
     float width;
     float height;
@@ -27,8 +29,10 @@ public:
     Brush();
     void Update(float elapsed);
     Brush(SheetTexture* sheet, float x, float y, bool visible=true);
+    Brush(GLuint texture, float x, float y, bool visible=true);
     Brush(float x, float y, bool visible=true);
     void draw();
+    void drawTexture();
     void drawSheet();
     void drawShape();
     void load();
