@@ -1,6 +1,5 @@
 //
-//  Running-Water.h
-//  Running-Water
+//  Running Water
 //  Copyright (c) 2015 John Ward. All rights reserved.
 //
 
@@ -20,38 +19,7 @@
 #include "Brush.h"
 const int LEVEL_SCALE = 20;
 
-class Vector {
-public:
-    Vector();
-    Vector(float x, float y, float z);
-    float length();
-    void normalize();
-    float x;
-    float y;
-    float z;
-};
 
-class Particle {
-public:
-    Vector position;
-    Vector velocity;
-    float lifetime;
-};
-
-class ParticleEmitter {
-public:
-    ParticleEmitter(unsigned int particleCount);
-    ParticleEmitter();
-    ~ParticleEmitter();
-    void Update(float elapsed);
-    void Render();
-    Vector velocity;
-    Vector velocityDeviation;
-    Vector position;
-    Vector gravity;
-    float maxLifetime;
-    std::vector<Particle> particles;
-};
 
 class ClassDemoApp {
 public:
@@ -67,6 +35,7 @@ public:
     void levelOne();
     void levelTwo();
     void levelThree();
+    void playerSpawn();
     void buildLevel();
     void drawLevel();
     void levelComplete();

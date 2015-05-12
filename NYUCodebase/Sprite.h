@@ -1,6 +1,5 @@
 //
-//  Sprite.h
-//  Running-Water
+//  Running Water
 //  Copyright (c) 2015 John Ward. All rights reserved.
 //
 
@@ -15,16 +14,10 @@
 #include "Texture.h"
 #include "Brush.h"
 #include <vector>
+#include "Helper-Functions.h"
 
-class Sprite {
+class Sprite : public Entity {
 public:
-    float x;
-    float y;
-    SheetTexture* sheet;
-    GLuint texture;
-    float rotation;
-    float width;
-    float height;
     
     float move_speed;
     float x_speed;
@@ -34,16 +27,15 @@ public:
     float x_friction;
     float y_friction;
     
-    bool visible;
     bool top_collided;
     bool bottom_collided;
     bool left_collided;
     bool right_collided;
     
     Sprite();
-    Sprite(GLuint texture, float x, float y, float rotation, float width, float height, bool visible=true);
-    Sprite(SheetTexture* sheet, float x, float y, float rotation, float width, float height, bool visible=true);
-    Sprite(float x, float y, float rotation, float width, float height, bool visible);
+    Sprite(GLuint texture, float x, float y, float width, float height, float rotation,bool visible=true);
+    Sprite(SheetTexture* sheet, float x, float y, float width, float height, float rotation, bool visible=true);
+    Sprite(float x, float y, float width, float height, float rotation, bool visible);
     
     
     void FixedUpdate(float elapsed, std::vector<Brush*> brushes);
@@ -51,22 +43,8 @@ public:
     bool top_bottom_collision_response(Brush* brush);
     bool left_right_collision_response(Brush* brush);
     
-    bool collision(Brush* brush);
-    bool top_collision(Brush* brush);
-    bool bottom_collision(Brush* brush);
-    bool left_collision(Brush* brush);
-    bool right_collision(Brush* brush);
-    
-    
-    void draw();
-    void drawSheet();
-    void drawTexture();
-    void drawShape();
-    
     void moveLeft();
     void moveRight();
-    
-    float lerp(float v0, float v1, float t);
 
 };
 

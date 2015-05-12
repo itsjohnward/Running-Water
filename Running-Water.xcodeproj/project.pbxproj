@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52185B281B01963D001E6027 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52185B261B01963D001E6027 /* Player.cpp */; };
+		52185B2B1B01965C001E6027 /* Debris.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52185B291B01965C001E6027 /* Debris.cpp */; };
+		52185B2E1B019674001E6027 /* Checkpoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52185B2C1B019674001E6027 /* Checkpoint.cpp */; };
 		522F9B101AA007E400C241F7 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 522F9B0E1AA007E400C241F7 /* Sprite.cpp */; };
 		52D260201B010EBC00D98163 /* sprite_alert_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D2601F1B010EBC00D98163 /* sprite_alert_flag.png */; };
 		52D260221B01103900D98163 /* font1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D260211B01103900D98163 /* font1.png */; };
 		52D260241B01113A00D98163 /* meteorBrown_small2.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D260231B01113A00D98163 /* meteorBrown_small2.png */; };
+		52D260271B01602B00D98163 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D260251B01602B00D98163 /* Entity.cpp */; };
+		52D2602A1B01613400D98163 /* ParticleEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D260281B01613400D98163 /* ParticleEmitter.cpp */; };
+		52D260301B01665200D98163 /* Helper-Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D2602E1B01665200D98163 /* Helper-Functions.cpp */; };
 		52EA9B111AA4C1990024CAAA /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52EA9B0F1AA4C1990024CAAA /* Texture.cpp */; };
 		52F009AD1AADE94D003A9A2F /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F009AB1AADE94D003A9A2F /* Brush.cpp */; };
 		52F81DAF1A9E854D003252FF /* Running-Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F81DAD1A9E854D003252FF /* Running-Water.cpp */; };
 		52F8D0C61B00279A0035D504 /* Floor Texture_0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0C51B00279A0035D504 /* Floor Texture_0.JPG */; };
 		52F8D0C81B002E9B0035D504 /* glass-of-water-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0C71B002E9B0035D504 /* glass-of-water-hi.png */; };
 		52F8D0CA1B004B920035D504 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F8D0C91B004B920035D504 /* SDL2_mixer.framework */; };
-		52F8D0CC1B004C7C0035D504 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0CB1B004C7C0035D504 /* music.mp3 */; };
 		52F8D0CE1B004CE10035D504 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0CD1B004CE10035D504 /* background.mp3 */; };
 		52F8D0D01B004E3F0035D504 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52F8D0CF1B004E3F0035D504 /* jump.wav */; };
 		52FC5BD21AF34BB90078D7F4 /* p1_spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FC5BD01AF34BB90078D7F4 /* p1_spritesheet.png */; };
@@ -37,11 +42,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52185B261B01963D001E6027 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		52185B271B01963D001E6027 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		52185B291B01965C001E6027 /* Debris.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debris.cpp; sourceTree = "<group>"; };
+		52185B2A1B01965C001E6027 /* Debris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debris.h; sourceTree = "<group>"; };
+		52185B2C1B019674001E6027 /* Checkpoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Checkpoint.cpp; sourceTree = "<group>"; };
+		52185B2D1B019674001E6027 /* Checkpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkpoint.h; sourceTree = "<group>"; };
 		522F9B0E1AA007E400C241F7 /* Sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
 		522F9B0F1AA007E400C241F7 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		52D2601F1B010EBC00D98163 /* sprite_alert_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite_alert_flag.png; sourceTree = "<group>"; };
 		52D260211B01103900D98163 /* font1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font1.png; sourceTree = "<group>"; };
 		52D260231B01113A00D98163 /* meteorBrown_small2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteorBrown_small2.png; sourceTree = "<group>"; };
+		52D260251B01602B00D98163 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		52D260261B01602B00D98163 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		52D260281B01613400D98163 /* ParticleEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEmitter.cpp; sourceTree = "<group>"; };
+		52D260291B01613400D98163 /* ParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEmitter.h; sourceTree = "<group>"; };
+		52D2602E1B01665200D98163 /* Helper-Functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Helper-Functions.cpp"; sourceTree = "<group>"; };
+		52D2602F1B01665200D98163 /* Helper-Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Helper-Functions.h"; sourceTree = "<group>"; };
 		52EA9B0F1AA4C1990024CAAA /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		52EA9B101AA4C1990024CAAA /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
 		52F009AB1AADE94D003A9A2F /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
@@ -51,7 +68,6 @@
 		52F8D0C51B00279A0035D504 /* Floor Texture_0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Floor Texture_0.JPG"; sourceTree = "<group>"; };
 		52F8D0C71B002E9B0035D504 /* glass-of-water-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glass-of-water-hi.png"; sourceTree = "<group>"; };
 		52F8D0C91B004B920035D504 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL2_mixer.framework; sourceTree = "<group>"; };
-		52F8D0CB1B004C7C0035D504 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		52F8D0CD1B004CE10035D504 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		52F8D0CF1B004E3F0035D504 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
 		52FC5BD01AF34BB90078D7F4 /* p1_spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1_spritesheet.png; sourceTree = "<group>"; };
@@ -91,13 +107,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		52AED58B1AB098310043A977 /* Sprite-Support */ = {
+		52185B2F1B019704001E6027 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				52F8D0CD1B004CE10035D504 /* background.mp3 */,
+				52F8D0CF1B004E3F0035D504 /* jump.wav */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		52AED58B1AB098310043A977 /* Entity-Support */ = {
 			isa = PBXGroup;
 			children = (
 				52EA9B0F1AA4C1990024CAAA /* Texture.cpp */,
 				52EA9B101AA4C1990024CAAA /* Texture.h */,
 			);
-			name = "Sprite-Support";
+			name = "Entity-Support";
+			sourceTree = "<group>";
+		};
+		52D2602B1B01622D00D98163 /* Entity Types */ = {
+			isa = PBXGroup;
+			children = (
+				522F9B0E1AA007E400C241F7 /* Sprite.cpp */,
+				522F9B0F1AA007E400C241F7 /* Sprite.h */,
+				52F009AB1AADE94D003A9A2F /* Brush.cpp */,
+				52F009AC1AADE94D003A9A2F /* Brush.h */,
+				52185B261B01963D001E6027 /* Player.cpp */,
+				52185B271B01963D001E6027 /* Player.h */,
+				52185B291B01965C001E6027 /* Debris.cpp */,
+				52185B2A1B01965C001E6027 /* Debris.h */,
+				52185B2C1B019674001E6027 /* Checkpoint.cpp */,
+				52185B2D1B019674001E6027 /* Checkpoint.h */,
+			);
+			name = "Entity Types";
 			sourceTree = "<group>";
 		};
 		52FC5BCF1AF34BA90078D7F4 /* Spritesheets */ = {
@@ -171,11 +213,9 @@
 		6D5A86B419AE5C710066C1FD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				52185B2F1B019704001E6027 /* Sounds */,
 				52FC5BCF1AF34BA90078D7F4 /* Spritesheets */,
 				6D5A86C519AE5C710066C1FD /* Images.xcassets */,
-				52F8D0CB1B004C7C0035D504 /* music.mp3 */,
-				52F8D0CD1B004CE10035D504 /* background.mp3 */,
-				52F8D0CF1B004E3F0035D504 /* jump.wav */,
 				6D5A86B519AE5C710066C1FD /* Running-Water-Info.plist */,
 				6D5A86B619AE5C710066C1FD /* InfoPlist.strings */,
 				6D5A86BC19AE5C710066C1FD /* Credits.rtf */,
@@ -189,11 +229,14 @@
 				6D5A86B919AE5C710066C1FD /* main.cpp */,
 				52F81DAD1A9E854D003252FF /* Running-Water.cpp */,
 				52F81DAE1A9E854D003252FF /* Running-Water.h */,
-				522F9B0E1AA007E400C241F7 /* Sprite.cpp */,
-				522F9B0F1AA007E400C241F7 /* Sprite.h */,
-				52F009AB1AADE94D003A9A2F /* Brush.cpp */,
-				52F009AC1AADE94D003A9A2F /* Brush.h */,
-				52AED58B1AB098310043A977 /* Sprite-Support */,
+				52D260251B01602B00D98163 /* Entity.cpp */,
+				52D260261B01602B00D98163 /* Entity.h */,
+				52D2602B1B01622D00D98163 /* Entity Types */,
+				52AED58B1AB098310043A977 /* Entity-Support */,
+				52D260281B01613400D98163 /* ParticleEmitter.cpp */,
+				52D260291B01613400D98163 /* ParticleEmitter.h */,
+				52D2602E1B01665200D98163 /* Helper-Functions.cpp */,
+				52D2602F1B01665200D98163 /* Helper-Functions.h */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -263,7 +306,6 @@
 				52FC5BD61AF34C360078D7F4 /* hud_spritesheet.png in Resources */,
 				52FC5BDB1AF34C7F0078D7F4 /* tiles_spritesheet.xml in Resources */,
 				6D5A86C619AE5C710066C1FD /* Images.xcassets in Resources */,
-				52F8D0CC1B004C7C0035D504 /* music.mp3 in Resources */,
 				52F8D0D01B004E3F0035D504 /* jump.wav in Resources */,
 				52F8D0C81B002E9B0035D504 /* glass-of-water-hi.png in Resources */,
 				6D5A86BE19AE5C710066C1FD /* Credits.rtf in Resources */,
@@ -280,9 +322,15 @@
 			files = (
 				52F009AD1AADE94D003A9A2F /* Brush.cpp in Sources */,
 				6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */,
+				52185B2B1B01965C001E6027 /* Debris.cpp in Sources */,
+				52185B2E1B019674001E6027 /* Checkpoint.cpp in Sources */,
+				52185B281B01963D001E6027 /* Player.cpp in Sources */,
 				52EA9B111AA4C1990024CAAA /* Texture.cpp in Sources */,
+				52D260301B01665200D98163 /* Helper-Functions.cpp in Sources */,
 				522F9B101AA007E400C241F7 /* Sprite.cpp in Sources */,
+				52D260271B01602B00D98163 /* Entity.cpp in Sources */,
 				52F81DAF1A9E854D003252FF /* Running-Water.cpp in Sources */,
+				52D2602A1B01613400D98163 /* ParticleEmitter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

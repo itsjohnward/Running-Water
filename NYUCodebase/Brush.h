@@ -1,6 +1,5 @@
 //
-//  brush.h
-//  Running-Water
+//  Running Water
 //  Copyright (c) 2015 John Ward. All rights reserved.
 //
 
@@ -12,32 +11,16 @@
 #include <SDL_image.h>
 #include "Texture.h"
 #include <vector>
+#include "Entity.h"
 
-class Brush {
+class Brush : public Entity {
 public:
-    float x;
-    float y;
-    SheetTexture* sheet;
-    GLuint texture;
-    
-    float rotation;
-    float width;
-    float height;
-    bool visible;
-    bool collideable;
     int trigger;
     float friction;
-    
-    Brush();
-    void Update(float elapsed);
-    Brush(SheetTexture* sheet, float x, float y, bool visible=true, bool collideable = true);
-    Brush(GLuint texture, float x, float y, bool visible=true, bool collideable = true);
-    Brush(float x, float y, bool visible=true, bool collideable = true);
-    void draw();
-    void drawTexture();
-    void drawSheet();
-    void drawShape();
-    void load();
+
+    Brush(SheetTexture* sheet, float x, float y, float height, float width, float rotation, bool visible=true, bool collideable = true);
+    Brush(GLuint texture, float x, float y, float height, float width, float rotation, bool visible=true, bool collideable = true);
+    Brush(float x, float y, float height, float width, float rotation, bool visible=true, bool collideable = true);
 };
 
 #endif /* defined(__NYUCodebase__Brush__) */
