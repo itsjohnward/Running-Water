@@ -12,16 +12,18 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <SDL_image.h>
+#include "Entity.h"
 
 
-class Particle {
+class Particle: public Entity{
 public:
+    Particle();
     Vector position;
     Vector velocity;
     float lifetime;
 };
 
-class ParticleEmitter {
+class ParticleEmitter: public Entity {
 public:
     ParticleEmitter(unsigned int particleCount);
     ParticleEmitter();

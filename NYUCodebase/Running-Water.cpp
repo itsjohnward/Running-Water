@@ -57,9 +57,9 @@ void ClassDemoApp::Init() {
     goal_texture = LoadTexture("sprite_alert_flag.png");
     debris_texture = LoadTexture("meteorBrown_small2.png");
     
-    levelThree();
+    levelOne();
     buildLevel();
-    state_level = 3;
+    state_level = 1;
     
 }
 
@@ -107,8 +107,8 @@ void ClassDemoApp::Update(float elapsed) {
             sprites[i]->FixedUpdate(FIXED_TIMESTEP, brushes);
         }
         for(int i = 0; i < debris.size(); i++) {
-            debris[i]->y -= elapsed;
-            debris[i]->rotation+=50*elapsed;
+            debris[i]->y -= FIXED_TIMESTEP;
+            debris[i]->rotation+=50*FIXED_TIMESTEP;
             if(player->collision(debris[i])){
                 state = STATE_DEAD;
             }
@@ -450,6 +450,5 @@ void ClassDemoApp::debrisFall() {
     
     if (rng > 0 && rng < 20) {
         debris.push_back(new Brush(debris_texture, (float)rng/10.0-1.0, 2, 1.0/LEVEL_SCALE, 1.0/LEVEL_SCALE, 0.0, true, false));
-        std::cout << "create debris" << std::endl;
     }
 }
