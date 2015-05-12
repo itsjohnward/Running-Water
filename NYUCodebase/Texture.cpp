@@ -1,9 +1,6 @@
 //
-//  Texture.cpp
-//  NYUCodebase
-//
-//  Created by John on 3/2/15.
-//  Copyright (c) 2015 Ivan Safrin. All rights reserved.
+//  Running Water
+//  Copyright (c) 2015 John Ward. All rights reserved.
 //
 
 #include "Texture.h"
