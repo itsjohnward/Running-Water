@@ -5,21 +5,6 @@
 
 #include "Running-Water.h"
 
-
-
-
-
-
-bool pointCollision(float x, float y, Sprite* sprite) {
-    //x /= 1.333; //Strange that his is an issue. Will blocks collide properly on the x, or do I have to divide something else by 1.333? Requires further investigation.
-    return(((sprite->x - sprite->width) < x) &&
-           ((sprite->x + sprite->width) > x) &&
-           ((sprite->y - sprite->height) < y) &&
-           ((sprite->y + sprite->height) > y));
-}
-
-
-
 // 60 FPS (1.0f/60.0f)
 float FIXED_TIMESTEP = 0.0166666f;
 int MAX_TIMESTEPS = 6;
@@ -98,7 +83,6 @@ void ClassDemoApp::Update(float elapsed) {
         for(int i = 0; i < brushes.size(); i++) {
             if ((brushes[i]->trigger == 1) && (player->collision(brushes[i]))) {
                 levelComplete();
-                std::cout << "level complete" << std::endl;
             }
         }
     
@@ -366,7 +350,6 @@ void ClassDemoApp::drawLevel() {
 }
 
 void ClassDemoApp::levelComplete() {
-    std::cout << state_level << std::endl;
     if(state_level==1 || state_level==2) {
         state_level++;
         if(state_level==2) {
