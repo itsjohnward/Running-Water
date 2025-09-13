@@ -1,6 +1,6 @@
-<div style="width:200px; height: 200px; border-radius:50%; overflow: hidden; background-color: white; border: 2px solid blue; margin-left: auto; margin-right: auto;">
-    <img src="./NYUCodebase/glass-of-water-hi.png" style="width:50%; margin-left: auto; margin-right: auto; display: block; padding-top: 25px;" />
-</div>
+<p align="center">
+  <img src="./NYUCodebase/glass-of-water-hi.png" alt="Glass of Water" width="150" height="200"/>
+</p>
 
 <div align="center">
 
