@@ -36,9 +36,7 @@
 		6D5A86BA19AE5C710066C1FD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A86B919AE5C710066C1FD /* main.cpp */; };
 		6D5A86BE19AE5C710066C1FD /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86BC19AE5C710066C1FD /* Credits.rtf */; };
 		6D5A86C619AE5C710066C1FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A86C519AE5C710066C1FD /* Images.xcassets */; };
-		6D5A86E319AE5CD10066C1FD /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5A86E219AE5CD10066C1FD /* SDL2.framework */; };
 		6D5AC2D019AE6280004CB1BF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5AC2CF19AE6280004CB1BF /* OpenGL.framework */; };
-		6D5AC2D219AE6A1E004CB1BF /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5AC2D119AE6A1E004CB1BF /* SDL2_image.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,8 +97,6 @@
 				6D5AC2D019AE6280004CB1BF /* OpenGL.framework in Frameworks */,
 				52F8D0CA1B004B920035D504 /* SDL2_mixer.framework in Frameworks */,
 				6D5A86AE19AE5C710066C1FD /* Cocoa.framework in Frameworks */,
-				6D5A86E319AE5CD10066C1FD /* SDL2.framework in Frameworks */,
-				6D5AC2D219AE6A1E004CB1BF /* SDL2_image.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +272,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -459,6 +456,18 @@
 					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
 				);
 				INFOPLIST_FILE = "NYUCodebase/Running-Water-Info.plist";
+				OTHER_CFLAGS = (
+					"-I/opt/homebrew/include/SDL2",
+					"-I/opt/homebrew/include",
+				);
+				OTHER_LDFLAGS = (
+					"-L/opt/homebrew/lib",
+					"-lSDL2",
+					"-L/opt/homebrew/Cellar/sdl2_image/2.8.8/lib",
+					"-lSDL2_image",
+					"-L/opt/homebrew/Cellar/sdl2_mixer/2.8.1_1/lib",
+					"-lSDL2_mixer",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -483,6 +492,18 @@
 					/Library/Frameworks/SDL2.framework/Versions/A/Headers,
 				);
 				INFOPLIST_FILE = "NYUCodebase/Running-Water-Info.plist";
+				OTHER_CFLAGS = (
+					"-I/opt/homebrew/include/SDL2",
+					"-I/opt/homebrew/include",
+				);
+				OTHER_LDFLAGS = (
+					"-L/opt/homebrew/lib",
+					"-lSDL2",
+					"-L/opt/homebrew/Cellar/sdl2_image/2.8.8/lib",
+					"-lSDL2_image",
+					"-L/opt/homebrew/Cellar/sdl2_mixer/2.8.1_1/lib",
+					"-lSDL2_mixer",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
